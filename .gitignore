@@ -1,0 +1,37 @@
+## Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+
+## Ignore build results
+bin/
+obj/
+out/
+
+## Ignore packages
+packages/
+*.nupkg
+*.snupkg
+
+## Ignore user-specific files
+*.userprefs
+*.userosscache
+*.sln.docstates
+
+## Ignore build artifacts
+*.dll
+*.exe
+*.app
+*.so
+*.dylib
+*.log
+
+## Ignore OS files
+.DS_Store
+Thumbs.db
+
+## Ignore publish folder
+publish/
+
+## Ignore environment files
+*.env
