@@ -28,7 +28,7 @@ List<string> BLACK_LIST_WORD = new List<string>
 {
     "etui",
     "obudowa",
-    "szk�o",
+    "szkło",
     "szklo",
     "folia",
     "hydrożel",
@@ -142,7 +142,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
                         || !offerDate.Contains("Dzisiaj")
                     )
                     {
-                        Console.WriteLine("invalid offer");
+                        
                         rejectedOffers.Add(offerUrl); // add offer to rejected offers list so it doesent get validated again
                     }
                     else
@@ -150,7 +150,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
                         offers.Add(
                             new Offer(offerTitle, offerPrice, offerUrl, offerDate, offerImg)
                         );
-                        Console.WriteLine($"offerImg: {offerImg}");
+                        
                     }
                 }
                 Console.WriteLine($"minutesCounter = {minutesCounter}");
@@ -158,13 +158,13 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
                 if (minutesCounter >= 60)
                 {
-                    offers.Clear();
+                    offers.RemoveRange(0, offers.Count - 4);
                     Console.WriteLine("Offers list cleared after 60 minutes.");
                     minutesCounter = 0;
                     offers = offers.GroupBy(o => o.Link).Select(g => g.First()).ToList();
                 }
 
-                Console.WriteLine();
+                
             }
             catch (Exception ex)
             {
@@ -178,5 +178,9 @@ app.Lifetime.ApplicationStarted.Register(() =>
         }
     });
 });
+
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
 
 app.Run();

@@ -1,7 +1,7 @@
 const itemsContainer = document.getElementById("items");
 
 function fetchOffers() {
-  fetch("http://localhost:5261/offers")
+  fetch("https://notification-tin-sure-highlights.trycloudflare.com/offers")
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
