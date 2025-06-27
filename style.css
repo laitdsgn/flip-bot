@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #1d1d1d;
+}
+body header {
+  color: #ffffff;
+  padding: 15px;
+  background-color: #0f0f0f;
+  color: #ff6666;
+  display: flex;
+  align-items: center;
+}
+body header .left {
+  flex: 1;
+  text-align: left;
+  margin: 0px 10px;
+  font-size: 10px;
+}
+body header .right {
+  flex: 1;
+  text-align: right;
+  margin: 0px 15px;
+}
+body header .right a {
+  color: #ff6767;
+  text-decoration: none;
+  margin-left: 10px;
+}
+body header .right a:hover {
+  text-decoration: underline;
+}
+body main #items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  padding: 20px;
+  justify-items: center;
+}
+body main #items .item {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  max-height: 500px;
+}
+body main #items .item h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+body main #items .item p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+body main #items .item a {
+  color: #ff2424;
+  text-decoration: none;
+  margin: 10px;
+}
+body main #items .item a button {
+  background-color: #ff2424;
+  color: #ffffff;
+  border: none;
+  padding: 9px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: scale 0.2s ease, background-color 0.2s ease;
+}
+body main #items .item a button:hover {
+  scale: 1.05;
+  background-color: rgb(177, 18, 18);
+}
+body main #items .item a:hover {
+  text-decoration: underline;
+}
+body main #items .item .photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 10px;
+}
+body main #items .item .photo-container img {
+  max-width: 100%;
+  height: auto;
+}/*# sourceMappingURL=style.css.map */
