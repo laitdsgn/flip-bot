@@ -85,6 +85,11 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
                 doc.LoadHtml(html);
 
+                // delete offers older than 2 hours
+                offers = offers
+                    .Where(o => (DateTime.Now - o.DateAdded) <= TimeSpan.FromHours(2))
+                    .ToList();
+
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@data-cy='l-card']"))
                 {
                     var offerTitle =
@@ -142,29 +147,32 @@ app.Lifetime.ApplicationStarted.Register(() =>
                         || !offerDate.Contains("Dzisiaj")
                     )
                     {
-
                         rejectedOffers.Add(offerUrl); // add offer to rejected offers list so it doesent get validated again
                     }
                     else
                     {
                         offers.Add(
-                            new Offer(offerTitle, offerPrice, offerUrl, offerDate, offerImg, DateTime.Now)
+                            new Offer(
+                                offerTitle,
+                                offerPrice,
+                                offerUrl,
+                                offerDate,
+                                offerImg,
+                                DateTime.Now
+                            )
                         );
-
                     }
                 }
+
                 Console.WriteLine($"minutesCounter = {minutesCounter}");
                 minutesCounter += 1;
 
                 if (minutesCounter >= 60)
                 {
-                    offers.RemoveRange(0, offers.Count - 4);
-                    Console.WriteLine("Offers list cleared after 60 minutes.");
+                    Console.WriteLine("removed duplicates");
                     minutesCounter = 0;
                     offers = offers.GroupBy(o => o.Link).Select(g => g.First()).ToList();
                 }
-
-
             }
             catch (Exception ex)
             {
