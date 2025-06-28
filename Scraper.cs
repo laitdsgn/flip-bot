@@ -142,15 +142,15 @@ app.Lifetime.ApplicationStarted.Register(() =>
                         || !offerDate.Contains("Dzisiaj")
                     )
                     {
-                        
+
                         rejectedOffers.Add(offerUrl); // add offer to rejected offers list so it doesent get validated again
                     }
                     else
                     {
                         offers.Add(
-                            new Offer(offerTitle, offerPrice, offerUrl, offerDate, offerImg)
+                            new Offer(offerTitle, offerPrice, offerUrl, offerDate, offerImg, DateTime.Now)
                         );
-                        
+
                     }
                 }
                 Console.WriteLine($"minutesCounter = {minutesCounter}");
@@ -164,7 +164,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
                     offers = offers.GroupBy(o => o.Link).Select(g => g.First()).ToList();
                 }
 
-                
+
             }
             catch (Exception ex)
             {

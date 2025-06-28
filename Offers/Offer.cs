@@ -9,12 +9,15 @@ class Offer
     public string Date { get; set; }
     public string Img { get; set; }
 
-    public Offer(string title, string price, string link, string date, string img)
+    public DateTime DateAdded { get; set; }
+
+    public Offer(string title, string price, string link, string date, string img, DateTime dateAdded)
     {
         Title = title;
         Price = price;
         Link = link;
         Date = date;
+        DateAdded = dateAdded;
         Img = img;
     }
 }
